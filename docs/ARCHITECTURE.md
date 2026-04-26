@@ -11,12 +11,11 @@
 src/
 ├── app/
 │   ├── (auth)/            # 로그인, 회원가입, 학생 인증 요청 페이지
-│   ├── (main)/            # 매물 목록, 매물 상세, 메시지 페이지
+│   ├── (main)/            # 매물 목록, 매물 상세 페이지
 │   ├── admin/             # 관리자 페이지 (인증 요청 검토)
 │   └── api/               # API 라우트 핸들러 (모든 서버 로직)
 │       ├── auth/
 │       ├── listings/
-│       ├── messages/
 │       └── admin/
 ├── components/            # 재사용 UI 컴포넌트
 ├── types/                 # TypeScript 타입 정의
@@ -62,28 +61,9 @@ src/
 | available_to | date | 숙박 가능 종료일 |
 | landlord_consent_url | text | 집주인 동의서 URL (Supabase Storage) |
 | image_urls | text[] | 사진 URL 배열 (Supabase Storage) |
+| contact_info | text | 등록자 연락처 (매물 상세 페이지에 표시) |
 | status | enum('active', 'inactive') | 매물 공개 여부 |
 | created_at | timestamptz | 등록일 |
-
-### conversations
-| 컬럼 | 타입 | 설명 |
-|------|------|------|
-| id | uuid | PK |
-| listing_id | uuid (FK listings) | 관련 매물 |
-| requester_id | uuid (FK profiles) | 문의한 사람 |
-| owner_id | uuid (FK profiles) | 매물 등록자 |
-| created_at | timestamptz | 생성일 |
-
-> 제약: `(listing_id, requester_id)` UNIQUE — 동일 매물에 대해 같은 사람이 대화방 중복 생성 불가
-
-### messages
-| 컬럼 | 타입 | 설명 |
-|------|------|------|
-| id | uuid | PK |
-| conversation_id | uuid (FK conversations) | 대화방 |
-| sender_id | uuid (FK profiles) | 발신자 |
-| content | text | 메시지 내용 |
-| created_at | timestamptz | 전송일 |
 
 ## 패턴
 - Server Components를 기본으로 사용. 인터랙션(폼, 버튼 이벤트)이 필요한 곳만 Client Component 사용
