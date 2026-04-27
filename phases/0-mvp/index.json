@@ -13,7 +13,9 @@
     {
       "step": 1,
       "name": "db-schema",
-      "status": "pending"
+      "status": "blocked",
+      "started_at": "2026-04-27T15:18:12+0900",
+      "blocked_reason": "아래 두 작업을 완료한 뒤 status를 'pending'으로 리셋하세요:\n1. Supabase 대시보드 > SQL Editor에서 supabase/schema.sql 실행\n2. Supabase 대시보드 > Storage에서 버킷 3개 생성:\n   - student-docs (private)\n   - landlord-consents (private)\n   - listing-images (public)"
     },
     {
       "step": 2,
