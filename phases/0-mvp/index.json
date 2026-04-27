@@ -24,7 +24,7 @@
       "status": "completed",
       "started_at": "2026-04-27T15:26:19+0900",
       "summary": "src/types/database.ts (Database 타입 수동 정의) + src/types/index.ts (앱 레벨 타입 별칭, ListingWithProfile, ListingFilter) + src/types/index.test.ts 작성 완료; npm run build 및 npm test 모두 통과",
-      "completed_at": "2026-04-27T15:28:00+0900"
+      "completed_at": "2026-04-27T15:28:06+0900"
     },
     {
       "step": 3,
