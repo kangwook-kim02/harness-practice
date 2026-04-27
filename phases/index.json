@@ -2,8 +2,9 @@
   "phases": [
     {
       "dir": "0-mvp",
-      "status": "error",
-      "failed_at": "2026-04-27T14:48:24+0900"
+      "status": "blocked",
+      "failed_at": "2026-04-27T14:48:24+0900",
+      "blocked_at": "2026-04-27T15:00:35+0900"
     }
   ]
 }
