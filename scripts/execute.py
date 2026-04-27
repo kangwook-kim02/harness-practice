@@ -313,7 +313,7 @@ class StepExecutor:
                 tag += f" [retry {attempt}/{self.MAX_RETRIES}]"
 
             with progress_indicator(tag) as pi:
-                self._invoke_claude(step, preamble)
+                invoke_result = self._invoke_claude(step, preamble)
                 elapsed = int(pi.elapsed)
 
             index = self._read_json(self._index_file)
@@ -341,9 +341,22 @@ class StepExecutor:
                 sys.exit(2)
 
             err_msg = next(
-                (s.get("error_message", "Step did not update status") for s in index["steps"] if s["step"] == step_num),
-                "Step did not update status",
+                (s.get("error_message", "") for s in index["steps"] if s["step"] == step_num),
+                "",
             )
+            if not err_msg and invoke_result.get("exitCode", 0) != 0:
+                stdout = invoke_result.get("stdout", "")
+                try:
+                    result_data = json.loads(stdout)
+                    if result_data.get("is_error") or result_data.get("result"):
+                        err_msg = f"Claude 오류: {result_data.get('result', 'Claude API error')}"
+                except (json.JSONDecodeError, TypeError):
+                    pass
+                if not err_msg:
+                    stderr = invoke_result.get("stderr", "")
+                    err_msg = stderr[:300] if stderr else f"Claude가 코드 {invoke_result['exitCode']}로 종료됨"
+            if not err_msg:
+                err_msg = "Step did not update status"
 
             if attempt < self.MAX_RETRIES:
                 for s in index["steps"]:
