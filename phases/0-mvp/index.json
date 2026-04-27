@@ -37,7 +37,10 @@
     {
       "step": 4,
       "name": "auth",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-27T15:29:39+0900",
+      "summary": "register/login/logout API 라우트 + (auth) 레이아웃 + 회원가입·로그인 페이지 구현; TDD 테스트 5개 포함, npm build 및 npm test 모두 통과",
+      "completed_at": "2026-04-27T15:34:00+0900"
     },
     {
       "step": 5,

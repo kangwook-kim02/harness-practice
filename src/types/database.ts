@@ -26,6 +26,7 @@ export type Database = {
           role?: 'user' | 'admin'
           created_at?: string
         }
+        Relationships: []
       }
       student_verifications: {
         Row: {
@@ -55,6 +56,7 @@ export type Database = {
           reviewed_at?: string | null
           created_at?: string
         }
+        Relationships: []
       }
       listings: {
         Row: {
@@ -102,8 +104,11 @@ export type Database = {
           status?: 'active' | 'inactive'
           created_at?: string
         }
+        Relationships: []
       }
     }
+    Views: Record<string, never>
+    Functions: Record<string, never>
     Enums: {
       user_role: 'user' | 'admin'
       verification_status: 'pending' | 'approved' | 'rejected'
