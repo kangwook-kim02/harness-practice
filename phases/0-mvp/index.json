@@ -29,7 +29,10 @@
     {
       "step": 3,
       "name": "supabase-client",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-27T15:28:06+0900",
+      "summary": "src/lib/supabase/server.ts (createClient/createServiceClient) + browser.ts (singleton) + src/middleware.ts (세션 갱신) + server.test.ts 작성 완료; npm run build 및 npm test 모두 통과",
+      "completed_at": "2026-04-27T15:29:30+0900"
     },
     {
       "step": 4,
