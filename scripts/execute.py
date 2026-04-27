@@ -242,8 +242,9 @@ class StepExecutor:
 
         prompt = preamble + step_file.read_text(encoding='utf-8')
         result = subprocess.run(
-            ["claude", "-p", "--dangerously-skip-permissions", "--output-format", "json", prompt],
+            "claude --dangerously-skip-permissions --output-format json",
             cwd=self._root, capture_output=True, text=True, timeout=1800, shell=True,
+            input=prompt, encoding='utf-8',
         )
 
         if result.returncode != 0:
@@ -257,7 +258,7 @@ class StepExecutor:
             "stdout": result.stdout, "stderr": result.stderr,
         }
         out_path = self._phase_dir / f"step{step_num}-output.json"
-        with open(out_path, "w") as f:
+        with open(out_path, "w", encoding='utf-8') as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
 
         return output

@@ -2,7 +2,8 @@
   "phases": [
     {
       "dir": "0-mvp",
-      "status": "pending"
+      "status": "error",
+      "failed_at": "2026-04-27T14:47:43+0900"
     }
   ]
 }
