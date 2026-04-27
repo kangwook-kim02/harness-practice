@@ -13,14 +13,18 @@
     {
       "step": 1,
       "name": "db-schema",
-      "status": "blocked",
+      "status": "completed",
       "started_at": "2026-04-27T15:18:12+0900",
-      "blocked_reason": "아래 두 작업을 완료한 뒤 status를 'pending'으로 리셋하세요:\n1. Supabase 대시보드 > SQL Editor에서 supabase/schema.sql 실행\n2. Supabase 대시보드 > Storage에서 버킷 3개 생성:\n   - student-docs (private)\n   - landlord-consents (private)\n   - listing-images (public)"
+      "summary": "supabase/schema.sql 생성 완료 (profiles, student_verifications, listings 테이블, RLS, trigger). Supabase에 수동 적용 및 Storage 버킷 3개 생성 확인됨.",
+      "completed_at": "2026-04-27T15:19:34+0900"
     },
     {
       "step": 2,
       "name": "core-types",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-27T15:26:19+0900",
+      "summary": "src/types/database.ts (Database 타입 수동 정의) + src/types/index.ts (앱 레벨 타입 별칭, ListingWithProfile, ListingFilter) + src/types/index.test.ts 작성 완료; npm run build 및 npm test 모두 통과",
+      "completed_at": "2026-04-27T15:28:00+0900"
     },
     {
       "step": 3,
